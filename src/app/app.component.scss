@@ -1,0 +1,62 @@
+.container{
+    width: 100%;
+    max-width: 960px;
+    padding: 0 1.5em;
+    margin: 0 auto;
+    background-color: rgb(224, 224, 224);
+}
+.weather-header__content{
+    padding: .5em 0 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(0, 151, 157);
+    font-size: 2em;
+    letter-spacing: 1px;
+}
+.weather-header__logo{
+    font-size: 30px;
+    font-weight: 700;
+}
+.weather-header__place{
+    font-size: 14px;
+    text-transform: uppercase;
+    display: flex;
+}
+input{
+    width: 20em;
+    line-height: 2em;
+    font-size: 1em;
+    padding: 0 1.5em;
+    color: lightslategray;
+}
+.inputSearch {
+    width: 30px;
+    height: 30px;
+    background: transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat center;
+    cursor: pointer;
+    background-color: white;
+}
+
+.weather-navigation .container{
+    background-color: rgb(64, 64, 64);
+}
+.btn_nav{
+    height: 2.5em;
+    width: 10em;
+    border: none;
+    background: none;
+    color: honeydew;
+    font-size: 1.2em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    vertical-align: middle;
+}
+.btn_nav:hover {
+    border: 1px solid darkgrey;
+    background-color: rgb(84, 84, 84);
+}
+.active{
+    border:1px solid white;
+    border-bottom: 4px solid rgb(27, 189, 71);
+    background-color: rgb(100, 100, 100);
+}
