@@ -15,26 +15,24 @@
   <div class="container">
       <div class="weather-navigation__content">
           <!-- <button [class.active]="isVisibleToday" -->
-          <button 
-                  class="btn_nav" 
+          <button class="btn_nav"
+                  (click)="btnClickToday()"
                   >Today</button>
-                  <!-- (click)="buttonClickToday()" -->
                   
           <!-- <button [class.active]="isVisibleForecast"  -->
-          <button 
-                  class="btn_nav"
+          <button class="btn_nav"
+                  (click)="btnClickFiveDay()"
                   >5-day forecast</button>
-                  <!-- (click)="buttonClickForecast()" -->
       </div>
   </div>
 </div>
 
 <div class="weather-body">
   <div class="container">
-      <div class="weather-current">
+      <div class="weather-current" *ngIf="isVisibleCurrent">
           <app-current></app-current>
       </div>
-      <div class="weather-5days">
+      <div class="weather-5days" *ngIf="isVisibleForecast">
           <app-forecast></app-forecast>
       </div>
       <div class="weather-hour">

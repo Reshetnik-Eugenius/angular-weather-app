@@ -6,5 +6,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-weather-app';
+  public isVisibleCurrent = true;
+  public isVisibleForecast = false;
+
+  btnClickToday(){
+    console.log("button click today");
+    this.isVisibleCurrent = true;
+    this.isVisibleForecast = false;
+  }
+  btnClickFiveDay(){
+    console.log("button click five day");
+    this.isVisibleCurrent = false;
+    this.isVisibleForecast = true;
+  }
 }
