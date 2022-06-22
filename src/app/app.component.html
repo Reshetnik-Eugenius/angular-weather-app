@@ -1,11 +1,11 @@
 <div class="container">
   <div class="weather-header__content">
       <div class="weather-header__logo">MY WEATHER</div>
-      <form class="weather-header__place">
+      <form class="weather-header__place" (change)="getInputValue()">
           <input  type="text"
                   name="searh_city" 
-                  placeholder="Enter city"/>
-                  <!-- [(ngModel)]="cityName" -->
+                  placeholder="Enter city"
+                  [(ngModel)]="cityName"/>
           <button type="submit" class="inputSearch"></button>
       </form>
   </div>

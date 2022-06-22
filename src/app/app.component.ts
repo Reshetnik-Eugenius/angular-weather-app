@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   public isVisibleCurrent = true;
   public isVisibleForecast = false;
+  cityName: string = 'Minsk, Belarus';
 
   btnClickToday(){
     console.log("button click today");
@@ -18,5 +19,9 @@ export class AppComponent {
     console.log("button click five day");
     this.isVisibleCurrent = false;
     this.isVisibleForecast = true;
+  }
+  getInputValue():string{
+    console.log(this.cityName);
+    return this.cityName;
   }
 }
