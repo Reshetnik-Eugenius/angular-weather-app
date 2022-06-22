@@ -9,13 +9,16 @@ import { CurrentComponent } from './components/current/current.component';
 import { ForecastComponent } from './components/forecast/forecast.component';
 import { HourComponent } from './components/hour/hour.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ErrorModalComponent } from './components/error-modal/error-modal.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     CurrentComponent,
     ForecastComponent,
-    HourComponent
+    HourComponent,
+    ErrorModalComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

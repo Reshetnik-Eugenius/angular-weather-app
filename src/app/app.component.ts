@@ -1,6 +1,8 @@
 import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { WeatherService } from './shared/service/weather.service';
+import {MatDialog} from "@angular/material/dialog";
+import { ErrorModalComponent } from './components/error-modal/error-modal.component';
 
 @Component({
   selector: 'app-root',
@@ -19,7 +21,9 @@ export class AppComponent {
   hightlighted!:number;
   error: any;
 
-  constructor(private weatherService: WeatherService,private datePipe: DatePipe) {
+  constructor(private weatherService: WeatherService,
+              private datePipe: DatePipe,
+              private dialog: MatDialog) {
     this.getInputValue();
 }
 
@@ -53,7 +57,15 @@ export class AppComponent {
   getDataCurrent():void {
     this.weatherService.getWeatherForCurrentDay(this.cityName).subscribe((data: any) => {
         this.today = data;
-    })
+    }), (err: any) => {
+      this.error = err;
+      console.log(this.error);
+    
+      this.dialog.open(ErrorModalComponent, {
+        width: '60%',
+        data: this.error
+      });
+    }
 }
 
 getDataForecast():void {
@@ -61,9 +73,16 @@ getDataForecast():void {
         this.weeks = data.list.filter((elem: { dt_txt: string | any[]; }) => elem.dt_txt.includes('15:00:00'));
         this.hours = data.list;
         this.hours = data.list.filter((elem: { dt_txt: string | any[]; }) => elem.dt_txt.includes(this.day.slice(0,10)));
-    }), (err: any) => {
-      this.error = err;
-      console.log(err.status)}
+    }),
+     (    error: any) => console.log('oops', error) 
+    // (err: any) => {
+    //   this.error = err;
+    //   console.log(err);
+    
+    //   this.dialog.open(ErrorModalComponent, {
+    //     width: '60%',
+    //     data: this.error
+    //   });
 }
 receiveSelDay($event: any) {
   this.day = $event;
