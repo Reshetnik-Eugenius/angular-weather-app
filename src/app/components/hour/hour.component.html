@@ -14,13 +14,13 @@
     </div>
     <div class="weather-hour__content-body"  *ngFor="let hour of hours">
         <div class="weather-hour__content-item">
-            <div class="weather-hour__item-date">{{hour.dt_txt | date: "EEEE"}}</div>
+            <div class="weather-hour__item-date">{{hour.dt_txt | date: "h a"}}</div>
             <div class="weather-hour__item-img">
                 <img src="https://openweathermap.org/img/wn/{{hour.weather[0].icon}}.png" alt="img_weather">
             </div>
             <div class="weather-hour__item-forecast delimiter">{{ hour.weather[0].description }}</div>
-            <div class="weather-hour__item-temp delimiter">{{ hour.main.temp }} °C</div>
-            <div class="weather-hour__item-real delimiter">{{ hour.main.feels_like }} °C</div>
+            <div class="weather-hour__item-temp delimiter">{{ hour.main.temp.toFixed() }} °C</div>
+            <div class="weather-hour__item-real delimiter">{{ hour.main.feels_like.toFixed() }} °C</div>
             <div class="weather-hour__item-wind"> {{ hour.wind.speed}} </div>
         </div>
     </div>

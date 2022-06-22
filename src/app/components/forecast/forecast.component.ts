@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-forecast',
@@ -8,15 +8,15 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ForecastComponent implements OnInit {
 
   @Input() weeks: any;
-  // weekDays: any;
+  @Output() selectEvent = new EventEmitter<string>();
+  selDay!: string;
   
-  constructor() { 
-    // this.weeks = this.weeks.filter((elem: { dt_txt: string | any[]; }) => elem.dt_txt.includes('15:00:00'));
-    // console.log("const");
-  }
+  constructor() {}
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void {}
 
+  sendSelDay(day: any){
+    this.selDay = day.dt_txt;
+    this.selectEvent.emit(this.selDay)
+  }
 }

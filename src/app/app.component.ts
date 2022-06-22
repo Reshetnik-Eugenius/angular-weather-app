@@ -1,10 +1,12 @@
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { WeatherService } from './shared/service/weather.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  providers: [DatePipe]
 })
 export class AppComponent {
   public isVisibleCurrent = true;
@@ -13,26 +15,37 @@ export class AppComponent {
   today: any;
   weeks: any;
   hours: any;
+  day: any;
 
-  constructor(private weatherService: WeatherService) {
+  constructor(private weatherService: WeatherService,private datePipe: DatePipe) {
     this.getInputValue();
 }
 
   btnClickToday(){
-    // console.log("button click today");
     this.isVisibleCurrent = true;
     this.isVisibleForecast = false;
+
+    let pipe = new DatePipe('en-US');
+    this.day = pipe.transform(new Date(), 'YYYY-MM-dd');
+
+    this.getDataForecast();
   }
+
   btnClickFiveDay(){
-    // console.log("button click five day");
     this.isVisibleCurrent = false;
     this.isVisibleForecast = true;
   }
+
+  btnClickDayInf(weeks: any){
+    console.log("button click day");
+    console.log(weeks);
+  }
   getInputValue():string{
-    // console.log(this.cityName);
     this.getDataCurrent();
     this.getDataForecast();
-    // this.getDataWeather();
+
+    let pipe = new DatePipe('en-US');
+    this.day = pipe.transform(new Date(), 'YYYY-MM-dd');
 
     return this.cityName;
   }
@@ -40,21 +53,19 @@ export class AppComponent {
   getDataCurrent():void {
     this.weatherService.getWeatherForCurrentDay(this.cityName).subscribe((data: any) => {
         this.today = data;
-        // console.log(this.today);
     })
 }
 
 getDataForecast():void {
     this.weatherService.getWeatherFor5Days(this.cityName).subscribe((data: any) => {
-        // this.weeks = data.list;
         this.weeks = data.list.filter((elem: { dt_txt: string | any[]; }) => elem.dt_txt.includes('15:00:00'));
         this.hours = data.list;
-        // console.log('this.hours - getDataForecast');
-        this.hours = data.list.filter((elem: { dt_txt: string | any[]; }) => elem.dt_txt.includes(this.hours[0].dt_txt.slice(0,10)));
-        // console.log(this.weeks);
-        // this.weeks = data.list.filter((elem: { dt_txt: string | any[]; }) => elem.dt_txt.includes('15:00:00'));
-        // console.log(this.weeks);
+        this.hours = data.list.filter((elem: { dt_txt: string | any[]; }) => elem.dt_txt.includes(this.day.slice(0,10)));
     })
+}
+receiveSelDay($event: any) {
+  this.day = $event;
+  this.getDataForecast();
 }
 
 }
