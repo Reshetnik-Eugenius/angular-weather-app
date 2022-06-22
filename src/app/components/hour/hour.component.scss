@@ -1,0 +1,45 @@
+.weather-hour__header{
+    color: rgb(33, 146, 140);
+    font-size: 1.1em;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    padding-bottom: .7em;
+}
+.weather-hour__content{
+    padding: 1em;
+    display: flex;
+    flex-direction: row;
+    line-height: 2em;
+}
+.weather-hour__item-forecast{
+    height: 3em;
+    font-size: .6em;
+    line-height: 1.1em;
+}
+.weather-hour__content-head{
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.weather-hour__head-day{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.weather-hour__content-item{
+    width: calc(100%/8);
+}
+.weather-hour__content-body{
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+}
+.weather-hour__item-img{
+    width: 30px;
+    margin-left: 10px;
+    padding: .8em 0;
+}
+.delimiter {
+    border-bottom: 1px solid rgb(242, 242, 242);
+}

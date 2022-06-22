@@ -1,1 +1,13 @@
-<p>forecast works!</p>
+<div class="weather-5days__container">
+    <div class="weather-5days__content" *ngFor="let day of weeks">
+        <div class="weather-5days__item">
+            <div class="weather-5days__item-name">{{day.dt_txt | date: "EEEE"}}</div>
+            <div class="weather-5days__item-date">{{day.dt_txt | date: "MMM dd"}}</div>
+            <div class="weather-5days__item-img">
+                <img src="https://openweathermap.org/img/wn/{{day.weather[0].icon}}.png" alt="img_weather">
+            </div>
+            <div class="weather-5days__item-temp">{{day.main.temp.toFixed()}}<sup>o</sup>C</div>
+            <div class="weather-5days__item-condition">{{day.weather[0].description}}</div>
+        </div>
+    </div>
+</div>

@@ -12,28 +12,27 @@ export class AppComponent {
   cityName: string = 'Minsk, Belarus';
   today: any;
   weeks: any;
+  hours: any;
 
   constructor(private weatherService: WeatherService) {
     this.getInputValue();
-    // console.log('app-constructor - '+ this.city);
-    // this.getDataToday();
-    // this.getData5Days();
 }
 
   btnClickToday(){
-    console.log("button click today");
+    // console.log("button click today");
     this.isVisibleCurrent = true;
     this.isVisibleForecast = false;
   }
   btnClickFiveDay(){
-    console.log("button click five day");
+    // console.log("button click five day");
     this.isVisibleCurrent = false;
     this.isVisibleForecast = true;
   }
   getInputValue():string{
-    console.log(this.cityName);
+    // console.log(this.cityName);
     this.getDataCurrent();
     this.getDataForecast();
+    // this.getDataWeather();
 
     return this.cityName;
   }
@@ -41,14 +40,22 @@ export class AppComponent {
   getDataCurrent():void {
     this.weatherService.getWeatherForCurrentDay(this.cityName).subscribe((data: any) => {
         this.today = data;
-        console.log(this.today);
+        // console.log(this.today);
     })
 }
 
 getDataForecast():void {
     this.weatherService.getWeatherFor5Days(this.cityName).subscribe((data: any) => {
-        this.weeks = data.list;
-        console.log(this.weeks);
+        // this.weeks = data.list;
+        this.weeks = data.list.filter((elem: { dt_txt: string | any[]; }) => elem.dt_txt.includes('15:00:00'));
+        this.hours = data.list;
+        // console.log('this.hours - getDataForecast');
+        this.hours = data.list.filter((elem: { dt_txt: string | any[]; }) => elem.dt_txt.includes(this.hours[0].dt_txt.slice(0,10)));
+        // console.log(this.weeks);
+        // this.weeks = data.list.filter((elem: { dt_txt: string | any[]; }) => elem.dt_txt.includes('15:00:00'));
+        // console.log(this.weeks);
     })
 }
+
 }
+

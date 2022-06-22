@@ -33,10 +33,10 @@
           <app-current [today]="today"></app-current>
       </div>
       <div class="weather-5days" *ngIf="isVisibleForecast">
-          <app-forecast></app-forecast>
+          <app-forecast [weeks]="weeks"></app-forecast>
       </div>
       <div class="weather-hour">
-          <app-hour></app-hour>
+          <app-hour [hours]="hours"></app-hour>
       </div>
   </div>
 </div>

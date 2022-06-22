@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-hour',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HourComponent implements OnInit {
 
-  constructor() { }
+  @Input() hours: any;
+  
+  
+  // constructor() { console.log(this.hours[0].dt_txt.slice(0,10));}
 
   ngOnInit(): void {
+    // this.hours = this.hours.filter((elem: { dt_txt: string | any[]; }) => elem.dt_txt.includes(this.hours[0].dt_txt.slice(0,10)));
   }
 
 }

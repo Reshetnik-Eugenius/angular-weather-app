@@ -1,0 +1,41 @@
+.weather-5days__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}  
+.weather-5days__item {
+    height: 100%;
+    border-radius: 5px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+    background-color: white;
+    width: 12.5em;
+    padding: 2em;
+    text-align: left;
+}
+.weather-5days__item:hover{
+    cursor: pointer;
+    background-color: rgb(240, 240, 240);
+}
+.weather-5days__item-name{
+    color: rgb(33, 146, 140);
+    font-size: 1.1em;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    padding-bottom: .7em;
+}
+.weather-5days__item-date{
+    padding-bottom: .7em;
+}
+.weather-5days__item-temp{
+    font-size: 1.8em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(66, 62, 62);
+    padding-bottom: .3em;
+}
+.weather-5days__item-img {
+    width: 80px;
+    margin: auto;
+    padding: 1em 0;
+}
