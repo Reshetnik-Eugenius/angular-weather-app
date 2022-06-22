@@ -1,7 +1,8 @@
 <div class="container">
   <div class="weather-header__content">
       <div class="weather-header__logo">MY WEATHER</div>
-      <form class="weather-header__place" (change)="getInputValue()">
+      <form class="weather-header__place"   (change)="getInputValue()" 
+                                            (submit)="unselDayForecast()">
           <input  type="text"
                   name="searh_city" 
                   placeholder="Enter city"
@@ -34,7 +35,8 @@
       </div>
       <div class="weather-5days" *ngIf="isVisibleForecast">
           <app-forecast (selectEvent)="receiveSelDay($event)"
-                        [weeks]="weeks"></app-forecast>
+                        [weeks]="weeks"
+                        [hightlighted]="hightlighted"></app-forecast>
       </div>
       <div class="weather-hour">
           <app-hour [hours]="hours" [day]="day"></app-hour>

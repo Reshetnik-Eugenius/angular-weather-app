@@ -16,6 +16,7 @@ export class AppComponent {
   weeks: any;
   hours: any;
   day: any;
+  hightlighted!:number;
 
   constructor(private weatherService: WeatherService,private datePipe: DatePipe) {
     this.getInputValue();
@@ -36,10 +37,6 @@ export class AppComponent {
     this.isVisibleForecast = true;
   }
 
-  btnClickDayInf(weeks: any){
-    console.log("button click day");
-    console.log(weeks);
-  }
   getInputValue():string{
     this.getDataCurrent();
     this.getDataForecast();
@@ -49,7 +46,9 @@ export class AppComponent {
 
     return this.cityName;
   }
-
+  unselDayForecast(){
+    this.hightlighted = 6;
+  }
   getDataCurrent():void {
     this.weatherService.getWeatherForCurrentDay(this.cityName).subscribe((data: any) => {
         this.today = data;

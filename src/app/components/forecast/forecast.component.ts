@@ -10,14 +10,20 @@ export class ForecastComponent implements OnInit {
   @Input() weeks: any;
   @Output() selectEvent = new EventEmitter<string>();
   selDay!: string;
-  hightlighted:number = 0;
-  
-  constructor() {}
+  @Input() hightlighted!:number;
 
-  ngOnInit(): void {}
+  constructor() {
+    // console.log(this.hightlighted);
+  }
+
+  ngOnInit(): void {
+    // console.log(this.hightlighted);
+  }
 
   sendSelDay(day: any){
     this.selDay = day.dt_txt;
+    // this.hightlighted = 2;
+    // console.log(this.hightlighted);
     this.selectEvent.emit(this.selDay);
   }
 }
