@@ -17,6 +17,7 @@ export class AppComponent {
   hours: any;
   day: any;
   hightlighted!:number;
+  error: any;
 
   constructor(private weatherService: WeatherService,private datePipe: DatePipe) {
     this.getInputValue();
@@ -60,7 +61,9 @@ getDataForecast():void {
         this.weeks = data.list.filter((elem: { dt_txt: string | any[]; }) => elem.dt_txt.includes('15:00:00'));
         this.hours = data.list;
         this.hours = data.list.filter((elem: { dt_txt: string | any[]; }) => elem.dt_txt.includes(this.day.slice(0,10)));
-    })
+    }), (err: any) => {
+      this.error = err;
+      console.log(err.status)}
 }
 receiveSelDay($event: any) {
   this.day = $event;
