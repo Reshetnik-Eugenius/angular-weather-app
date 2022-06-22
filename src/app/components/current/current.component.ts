@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
@@ -9,9 +10,13 @@ export class CurrentComponent implements OnInit {
 
   @Input() today: any;
   
+  dayName: any;
+
   constructor() { }
 
   ngOnInit(): void {
+    let pipe = new DatePipe('en-US');
+    this.dayName = pipe.transform(new Date(), 'dd.MM.YYYY');
   }
 
   durationDay(value_sunset:number, value_sunrise:number):string{

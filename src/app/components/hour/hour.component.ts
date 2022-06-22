@@ -8,7 +8,14 @@ import { Component, Input, OnInit } from '@angular/core';
 export class HourComponent implements OnInit {
 
   @Input() hours: any;
+  @Input() day: any;
   
   ngOnInit(): void {}
 
+  getWeekDay(dateMS: any){
+    let date = new Date(dateMS);
+    var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    console.log("asd - "+days[date.getDay()]);
+    return days[date.getDay()];
+  }
 }
