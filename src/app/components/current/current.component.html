@@ -1,1 +1,44 @@
-<p>current works!</p>
+<div class="weather-current__header">
+    <div class="weather-current__header-title">Current weather</div>
+    <div class="weather-current__header-date" id="curDateID"></div>
+</div>
+
+<div class="weather-current__body">
+    <div class="weather-current__img-condition">
+        <div class="weather-current__img">
+            <img src="https://openweathermap.org/img/w/{{today.weather[0].icon}}.png" alt="img_weather" id="curImgID">
+        </div>
+        <div class="weather-current__img-title">
+            {{ today.weather[0].description }}
+        </div>
+    </div>
+
+    <div class="weather-current__temperature">
+        <div class="weather-current__temperature-value">
+            {{ today.main.temp.toFixed() }}
+            <span id="curTempID"></span>
+        </div>
+        
+        <div class="weather-current__temperature-realFeel">Real Feel
+            {{ today.main.feels_like.toFixed() }}
+            <span class="weather-current__temperature-realFeel-value" id="curRealFeelTempID"></span>
+        </div>
+    </div>
+
+    <div class="weather-current__sun">
+        <table class="table_sun">
+            <tr>
+                <th>Sunrise:</th>
+                <td> {{ today.sys.sunrise*1000 | date:'shortTime':'en-US' }}</td>
+                </tr>
+            <tr>
+                <th>Sunset:</th>
+                <td> {{ today.sys.sunset*1000 | date:'shortTime':'en-US' }}</td>
+            </tr>
+            <tr>
+                <th>Duration:</th>
+                <td>{{ this.durationDay(today.sys.sunset, today.sys.sunrise) }}</td>
+            </tr>
+        </table>
+    </div>
+</div>

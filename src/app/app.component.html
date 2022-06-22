@@ -30,7 +30,7 @@
 <div class="weather-body">
   <div class="container">
       <div class="weather-current" *ngIf="isVisibleCurrent">
-          <app-current></app-current>
+          <app-current [today]="today"></app-current>
       </div>
       <div class="weather-5days" *ngIf="isVisibleForecast">
           <app-forecast></app-forecast>

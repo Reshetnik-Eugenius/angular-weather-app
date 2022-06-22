@@ -1,0 +1,51 @@
+.weather-current__header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-bottom: 1em;
+
+    color: rgb(33, 146, 140);
+    font-size: 1.1em;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-transform: uppercase;
+}
+
+.weather-current__body{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; 
+}
+.weather-current__img{
+    margin: auto;
+    width: 52px;
+}
+img{
+    width: 100%;
+    height: 100%;
+}
+.weather-current__temperature{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+.weather-current__temperature-value{
+    font-size: 3em;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(66, 62, 62);
+}
+#curTempID::after{
+    content: '\00B0''C';
+}
+.weather-current__temperature-realFeel{
+    font-size: .9em;
+}
+#curRealFeelTempID::after{
+    content: '\00B0''C';
+}
+th {
+    text-align: left;
+    padding-right: .8em;
+    line-height: 1.5em;
+    font-weight: normal;
+}
