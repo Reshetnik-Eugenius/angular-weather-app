@@ -1,5 +1,8 @@
 <div class="weather-5days__container">
-    <div class="weather-5days__content" *ngFor="let day of weeks" (click)="sendSelDay(day)">
+    <div class="weather-5days__content" *ngFor="let day of weeks; let index = index" 
+                                        (click)="sendSelDay(day)"
+                                        (click)="hightlighted = index+1"
+                                        [class.highlight]="hightlighted === index+1">
         <div class="weather-5days__item">
             <div class="weather-5days__item-name">{{day.dt_txt | date: "EEEE"}}</div>
             <div class="weather-5days__item-date">{{day.dt_txt | date: "MMM dd"}}</div>

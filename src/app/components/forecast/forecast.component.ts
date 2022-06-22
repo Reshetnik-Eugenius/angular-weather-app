@@ -10,6 +10,7 @@ export class ForecastComponent implements OnInit {
   @Input() weeks: any;
   @Output() selectEvent = new EventEmitter<string>();
   selDay!: string;
+  hightlighted:number = 0;
   
   constructor() {}
 
@@ -17,6 +18,6 @@ export class ForecastComponent implements OnInit {
 
   sendSelDay(day: any){
     this.selDay = day.dt_txt;
-    this.selectEvent.emit(this.selDay)
+    this.selectEvent.emit(this.selDay);
   }
 }

@@ -8,7 +8,7 @@
     border-radius: 5px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 
-    background-color: white;
+    // background-color: white;
     width: 12.5em;
     padding: 2em;
     text-align: left;
@@ -17,6 +17,14 @@
     cursor: pointer;
     background-color: rgb(240, 240, 240);
 }
+.weather-5days__item:active{
+    background-color: rgb(204, 192, 176);
+    color: red;
+    
+}
+div.highlight {
+    background-color: rgb(164, 229, 231);  
+  }
 .weather-5days__item-name{
     color: rgb(33, 146, 140);
     font-size: 1.1em;
