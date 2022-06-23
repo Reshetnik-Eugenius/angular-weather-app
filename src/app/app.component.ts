@@ -52,37 +52,30 @@ export class AppComponent {
     return this.cityName;
   }
   unselDayForecast(){
-    this.hightlighted = 6;
+    this.hightlighted = 1;
   }
   getDataCurrent():void {
     this.weatherService.getWeatherForCurrentDay(this.cityName).subscribe((data: any) => {
         this.today = data;
-    }), (err: any) => {
-      this.error = err;
-      console.log(this.error);
-    
-      this.dialog.open(ErrorModalComponent, {
-        width: '60%',
-        data: this.error
-      });
-    }
+    })
 }
 
 getDataForecast():void {
-    this.weatherService.getWeatherFor5Days(this.cityName).subscribe((data: any) => {
-        this.weeks = data.list.filter((elem: { dt_txt: string | any[]; }) => elem.dt_txt.includes('15:00:00'));
-        this.hours = data.list;
-        this.hours = data.list.filter((elem: { dt_txt: string | any[]; }) => elem.dt_txt.includes(this.day.slice(0,10)));
+  this.weatherService.getWeatherFor5Days(this.cityName).subscribe(
+    (data: any) => {
+      this.weeks = data.list.filter((elem: { dt_txt: string | any[]; }) => elem.dt_txt.includes('15:00:00'));
+      this.hours = data.list;
+      this.hours = data.list.filter((elem: { dt_txt: string | any[]; }) => elem.dt_txt.includes(this.day.slice(0,10)))
     }),
-     (    error: any) => console.log('oops', error) 
-    // (err: any) => {
-    //   this.error = err;
-    //   console.log(err);
+    (err: any) => {
+      this.error = err;
+      // console.log(err);
     
-    //   this.dialog.open(ErrorModalComponent, {
-    //     width: '60%',
-    //     data: this.error
-    //   });
+      this.dialog.open(ErrorModalComponent, {
+        width: '30%',
+        data: this.error
+      });
+    }
 }
 receiveSelDay($event: any) {
   this.day = $event;

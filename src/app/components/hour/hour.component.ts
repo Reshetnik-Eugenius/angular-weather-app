@@ -15,7 +15,6 @@ export class HourComponent implements OnInit {
   getWeekDay(dateMS: any){
     let date = new Date(dateMS);
     var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    console.log("asd - "+days[date.getDay()]);
     return days[date.getDay()];
   }
 }
